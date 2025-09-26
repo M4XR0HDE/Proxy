@@ -1,0 +1,36 @@
+<html>
+<head>
+	<title>Blocked by Proxy</title>
+	<script>
+		function showRequestForm() {
+			document.getElementById('requestForm').style.display = 'block';
+		}
+		function sendRequest() {
+			var domain = new URLSearchParams(window.location.search).get('site') || '{website}';
+			var desc = document.getElementById('desc').value;
+			fetch('http://localhost:8080/request_whitelist', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({ domain: domain, description: desc })
+			}).then(r => {
+				if (r.ok) {
+					document.getElementById('requestForm').innerHTML = '<b>Request sent!</b>';
+				} else {
+					document.getElementById('requestForm').innerHTML = '<b>Request failed!</b>';
+				}
+			}).catch(() => {
+				document.getElementById('requestForm').innerHTML = '<b>Request failed!</b>';
+			});
+		}
+	</script>
+</head>
+<body>
+	<h1>The site {website} isn't available because it is blocked by the proxy.</h1>
+	<a href="#" onclick="showRequestForm()">Do you want to add the domain {website} to the whitelist?</a>
+	<div id="requestForm" style="display:none; margin-top:20px;">
+		<label>Describe why:</label>
+		<input type="text" id="desc" style="width:300px;">
+		<button onclick="sendRequest()">Send</button>
+	</div>
+</body>
+</html>
