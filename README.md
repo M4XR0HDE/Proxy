@@ -5,7 +5,7 @@ This Python-based proxy server operates on a strict whitelist principle: **all t
 
 ## Key Features
 -**Default-Deny Policy**: Blocks all domains/IPs not on the whitelist
--**Comprehensive Logging**: Records timestamp, source IP, destination URL, and status of blocked requests
+-**Comprehensive Logging**: Records timestamp, destination URL
 -**User-Friendly Block Page**: Redirects HTTP requests to a custom portal for whitelist requests
 -**Simple Configuration**: Manage whitelist via editable `whitelist.json` file
 
