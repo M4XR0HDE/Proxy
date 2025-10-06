@@ -15,7 +15,7 @@ This Python-based proxy server operates on a strict whitelist principle: **all t
 3. **Action**:
    -**Allowed**: Proxies request to destination
    -**Blocked**:
-     - Logs request details to `blocked_requests.log`
+     - Logs request details to `blocked_requests.json`
      - For HTTP sites: Serves custom portal page
      - For HTTPS sites: Returns 403 Forbidden
 
